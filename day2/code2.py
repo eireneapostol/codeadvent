@@ -20,13 +20,22 @@ import os
 f = open("./inputs/day2","r")
 check = 0
 for line in f:
+    #print(line)
     n = line.split()
     n = list(map(int, n))
-    divisor = n[0]
-    for nr in len(n):
-        maxim = max(maxim, nr)
-        minim = min(minim, nr)
-    check+=(maxim - minim)
+    i = 0
+    j = 1
+    while (n[j]%n[i]!=0) and (i < len(n)):
+        #print(i,j)
+        j+=1
+        if i == j:
+            j += 1
+        elif j == (len(n)):
+            j = 0
+            i += 1
+    #print(n[j])
+    #print(n[i])
+    check+=(n[j]/n[i])
 
 print(check)
     
