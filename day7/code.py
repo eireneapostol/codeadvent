@@ -58,17 +58,42 @@ class Tree(object):
         assert isinstance(node, Tree)
         self.children.append(node)
 
-f = open("./inputs/day7-test","r")
+f = open("./inputs/day7","r")
+towers = []
 
+a = [[0] * 5000 for i in range(2)]
+#print(a)
+count = 0
 for line in f:
     line = line.split()
-    #print(line)
+    
     if len(line) == 2:
         t = Tree(line[0])
-        print(t)
+        a[0][count] = line[0]
+        #print(a[0][count])
+        count += 1
+    else:
+        t = Tree(line[0])
+        a[0][count] = line[0]
+        count += 1
+        for i in range(3, len(line)):
+            child_name = line[i].split(',')
+            t_child = Tree(child_name[0])
+            t.add_child(t_child)
+            a[0][count] = child_name[0]
+            #print(a[0][count])
+            count += 1
+    towers.append(t)
 
-t = Tree('*', [Tree('1'),
-               Tree('2'),
-               Tree('+', [Tree('3'),
-                          Tree('4')])])
-print(t.children)
+#print(a)
+
+for i in range(5000):
+    tow = a[0][i]
+    for j in range(5000):
+        if a[0][i] == a[0][j]:
+            a[1][i] += 1
+
+for j in range(5000):
+    if a[1][j] == 1:
+        print(a[0][j])
+
