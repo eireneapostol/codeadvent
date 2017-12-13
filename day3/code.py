@@ -25,7 +25,7 @@ import os
 import math
 import time
 start_time = time.time()
-f = open("./inputs/day3","r")
+f = open("./inputs/day3-test","r")
 f = f.read()
 number = int(f)
 print(number)
@@ -102,8 +102,8 @@ while n > 0:
         n = dreapta_centru(n, sus, jos, dreapta)
         dreapta += 1
 #print spiral matrix
-#for row in a:
-#    print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
+for row in a:
+    print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
 
 i = 0
 j = 0
@@ -189,9 +189,9 @@ while suma < number:
     suma = neighbours(ii,jj)
     b[ii][jj] = suma
     #print matrix for each new sum
-    #for row in b:
-    #    print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
-    #print()
+    for row in b:
+        print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
+    print()
     
     z += 1 #value to search for in matrix A
 

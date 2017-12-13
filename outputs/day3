@@ -1,9 +1,32 @@
-277678
+9
+5   4   3  
+6   1   2  
+7   8   9  
 Position of number 1:
- 263 263
+ 1 1
 Number of steps:
- 475
---- Part ONE 0.20575523376464844 seconds ---
+ 2
+--- Part ONE 0.00039124488830566406 seconds ---
+0   0   0  
+0   1   1  
+0   0   0  
+
+0   0   2  
+0   1   1  
+0   0   0  
+
+0   4   2  
+0   1   1  
+0   0   0  
+
+5   4   2  
+0   1   1  
+0   0   0  
+
+5   4   2  
+10  1   1  
+0   0   0  
+
 Highest first neighbour:
- 279138
---- Part TWO 3.291159152984619 seconds ---
+ 10
+--- Part TWO 8.511543273925781e-05 seconds ---
