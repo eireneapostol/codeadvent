@@ -23,7 +23,9 @@ Your puzzle input is 277678.
 
 import os
 import math
-f = open("./inputs/day3-test","r")
+import time
+start_time = time.time()
+f = open("./inputs/day3","r")
 f = f.read()
 number = int(f)
 print(number)
@@ -125,6 +127,8 @@ print("Position of number 1:\n",ii,jj)
 #print number of steps from input to number 1
 print("Number of steps:\n",abs(ii-i_poz)+abs(jj-j_poz))
 
+print("--- Part ONE %s seconds ---" % (time.time() - start_time))
+
 ## PART TWO ##
 '''
 As a stress test on the system, the programs here clear the grid and then store the value 1 in square 1. Then, in the same allocation order as shown above, they store the sum of the values in all adjacent squares, including diagonals.
@@ -147,7 +151,7 @@ What is the first value written that is larger than your puzzle input?
 
 Your puzzle input is still 277678.
 '''
-
+start_time = time.time()
 def neighbours(i,j):
     suma = 0
 
@@ -185,10 +189,12 @@ while suma < number:
     suma = neighbours(ii,jj)
     b[ii][jj] = suma
     #print matrix for each new sum
-    for row in b:
-        print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
-    print()
+    #for row in b:
+    #    print(' '.join(['{0:3s}'.format(str(elem)) for elem in row]))
+    #print()
     
     z += 1 #value to search for in matrix A
 
 print("Highest first neighbour:\n",suma)
+
+print("--- Part TWO %s seconds ---" % (time.time() - start_time))
