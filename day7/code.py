@@ -44,20 +44,6 @@ In this example, tknk is at the bottom of the tower (the bottom program), and is
 
 Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
 '''
-class Tree(object):
-    "Generic tree node."
-    def __init__(self, name='root', children=None):
-        self.name = name
-        self.children = []
-        if children is not None:
-            for child in children:
-                self.add_child(child)
-    def __repr__(self):
-        return self.name
-    def add_child(self, node):
-        assert isinstance(node, Tree)
-        self.children.append(node)
-
 f = open("./inputs/day7","r")
 towers = []
 
@@ -68,22 +54,17 @@ for line in f:
     line = line.split()
     
     if len(line) == 2:
-        t = Tree(line[0])
         a[0][count] = line[0]
         #print(a[0][count])
         count += 1
     else:
-        t = Tree(line[0])
         a[0][count] = line[0]
         count += 1
         for i in range(3, len(line)):
             child_name = line[i].split(',')
-            t_child = Tree(child_name[0])
-            t.add_child(t_child)
             a[0][count] = child_name[0]
             #print(a[0][count])
             count += 1
-    towers.append(t)
 
 #print(a)
 
