@@ -16,6 +16,56 @@ As you can see, tknk's disc is unbalanced: ugml's stack is heavier than the othe
 
 Given that exactly one program is the wrong weight, what would its weight need to be to balance the entire tower?
 '''
+import json
+import re
+f = open("./inputs/day7-test","r")
 
-f = open("./inputs/day7","r")
+towers = []
 
+
+# reading input in a list of towers
+for line in f:
+    tower = {}
+    line = line.split()
+    tower["name"] = line[0]
+    match = re.search('[0-9]+',line[1]) # extract the weight from the parenthesis
+    tower["weight"] = match.group()
+    if len(line) > 2:
+        tower["children"] = []
+        for i in range(3, len(line)):
+            child_name = line[i].split(',')[0] # remove the coma from the name
+            tower["children"].append(child_name)
+
+    towers.append(tower)
+
+# arranging the towers in a tree
+
+def create_tree(tree,root):
+    print(tree)
+    print(json.dumps(towers, indent=4, sort_keys=True))
+    for tower in towers:
+        if tower["name"] == root:
+            print(root)
+            tree["name"] = root
+            tree["weight"] = tower["weight"]
+            towers.remove(tower)
+            if "children" in tower:
+                print(root)
+                tree["children"] = []
+                for tower_child in tower["children"]:
+                    child = {}
+                    #child["name"] = tower_children
+                    tree["children"].append(child)
+                    tree = child
+                    root = tower_child
+                    #print(tower_children)
+                    tree = create_tree(tree,root)
+    return tree
+
+root = "tknk" # obtained from running the code from Part1
+parent = "tknk"
+tree = {}
+create_tree(tree,root)
+
+print(json.dumps(towers, indent=4, sort_keys=True))
+print(json.dumps(tree, indent=4, sort_keys=True))
