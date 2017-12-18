@@ -67,14 +67,11 @@ def create_tree(tree,root):
 def search_tree(tree):
     print(tree["aa_name"])
     if "children" in tree:
+        children_balanced = "yes"
         for i in tree["children"]:
             print(i["aa_name"])
             print(tree["children_weight"])
-            children_weight = int(tree["children_weight"])
-            children_weight_new = search_tree(i)
-            children_weight += children_weight_new
-            tree["children_weight"] = children_weight
-    
+            tree["children_weight"] += search_tree(i)
     print(tree["weight"])
     return int(tree["weight"])
 
@@ -83,7 +80,7 @@ root = "tknk" # obtained from running the test example from Part1
 #root = "mwzaxaj" #obtained from running input code from Part1
 tree = {}
 tree = create_tree(tree,root)
-print(json.dumps(tree, indent=4, sort_keys=True))
+
 search_tree(tree)
 
 print(json.dumps(towers, indent=4, sort_keys=True))
