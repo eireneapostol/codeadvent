@@ -44,7 +44,7 @@ In this example, tknk is at the bottom of the tower (the bottom program), and is
 
 Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
 '''
-f = open("./inputs/day7-test","r")
+f = open("./inputs/day7","r")
 towers = []
 
 #NOT a very elegant solution

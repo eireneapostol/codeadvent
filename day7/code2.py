@@ -27,9 +27,10 @@ towers = []
 for line in f:
     tower = {}
     line = line.split()
-    tower["name"] = line[0]
+    tower["aa_name"] = line[0]
     match = re.search('[0-9]+',line[1]) # extract the weight from the parenthesis
-    tower["weight"] = match.group()
+    weight = (str(match.group()))
+    tower["weight"] = int(weight)
     if len(line) > 2:
         tower["children"] = []
         for i in range(3, len(line)):
@@ -41,31 +42,49 @@ for line in f:
 # arranging the towers in a tree
 
 def create_tree(tree,root):
-    print(tree)
-    print(json.dumps(towers, indent=4, sort_keys=True))
+    #print(tree)
+    #print(json.dumps(towers, indent=4, sort_keys=True))
     for tower in towers:
-        if tower["name"] == root:
-            print(root)
-            tree["name"] = root
+        if tower["aa_name"] == root:
+            #print(root)
+            tree["aa_name"] = root
             tree["weight"] = tower["weight"]
             towers.remove(tower)
+            tree["children_weight"] = 0
             if "children" in tower:
-                print(root)
+                #print(root)
                 tree["children"] = []
                 for tower_child in tower["children"]:
                     child = {}
                     #child["name"] = tower_children
-                    tree["children"].append(child)
-                    tree = child
-                    root = tower_child
+                    child_name = tower_child
                     #print(tower_children)
-                    tree = create_tree(tree,root)
+                    child = create_tree(child,child_name)
+                    tree["children"].append(child)
+
     return tree
 
-root = "tknk" # obtained from running the code from Part1
-parent = "tknk"
+def search_tree(tree):
+    print(tree["aa_name"])
+    if "children" in tree:
+        for i in tree["children"]:
+            print(i["aa_name"])
+            print(tree["children_weight"])
+            children_weight = int(tree["children_weight"])
+            children_weight_new = search_tree(i)
+            children_weight += children_weight_new
+            tree["children_weight"] = children_weight
+    
+    print(tree["weight"])
+    return int(tree["weight"])
+
+
+root = "tknk" # obtained from running the test example from Part1
+#root = "mwzaxaj" #obtained from running input code from Part1
 tree = {}
-create_tree(tree,root)
+tree = create_tree(tree,root)
+print(json.dumps(tree, indent=4, sort_keys=True))
+search_tree(tree)
 
 print(json.dumps(towers, indent=4, sort_keys=True))
 print(json.dumps(tree, indent=4, sort_keys=True))

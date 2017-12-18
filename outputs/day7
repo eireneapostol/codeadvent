@@ -1,203 +1,197 @@
-{}
-[
-    {
-        "name": "pbga",
-        "weight": "66"
-    },
-    {
-        "name": "xhth",
-        "weight": "57"
-    },
-    {
-        "name": "ebii",
-        "weight": "61"
-    },
-    {
-        "name": "havc",
-        "weight": "66"
-    },
-    {
-        "name": "ktlj",
-        "weight": "57"
-    },
-    {
-        "children": [
-            "ktlj",
-            "cntj",
-            "xhth"
-        ],
-        "name": "fwft",
-        "weight": "72"
-    },
-    {
-        "name": "qoyq",
-        "weight": "66"
-    },
-    {
-        "children": [
-            "pbga",
-            "havc",
-            "qoyq"
-        ],
-        "name": "padx",
-        "weight": "45"
-    },
-    {
-        "children": [
-            "ugml",
-            "padx",
-            "fwft"
-        ],
-        "name": "tknk",
-        "weight": "41"
-    },
-    {
-        "name": "jptl",
-        "weight": "61"
-    },
-    {
-        "children": [
-            "gyxo",
-            "ebii",
-            "jptl"
-        ],
-        "name": "ugml",
-        "weight": "68"
-    },
-    {
-        "name": "gyxo",
-        "weight": "61"
-    },
-    {
-        "name": "cntj",
-        "weight": "57"
-    }
-]
+{
+    "aa_name": "tknk",
+    "children": [
+        {
+            "aa_name": "ugml",
+            "children": [
+                {
+                    "aa_name": "gyxo",
+                    "children_weight": 0,
+                    "weight": 61
+                },
+                {
+                    "aa_name": "ebii",
+                    "children_weight": 0,
+                    "weight": 61
+                },
+                {
+                    "aa_name": "jptl",
+                    "children_weight": 0,
+                    "weight": 61
+                }
+            ],
+            "children_weight": 0,
+            "weight": 68
+        },
+        {
+            "aa_name": "padx",
+            "children": [
+                {
+                    "aa_name": "pbga",
+                    "children_weight": 0,
+                    "weight": 66
+                },
+                {
+                    "aa_name": "havc",
+                    "children_weight": 0,
+                    "weight": 66
+                },
+                {
+                    "aa_name": "qoyq",
+                    "children_weight": 0,
+                    "weight": 66
+                }
+            ],
+            "children_weight": 0,
+            "weight": 45
+        },
+        {
+            "aa_name": "fwft",
+            "children": [
+                {
+                    "aa_name": "ktlj",
+                    "children_weight": 0,
+                    "weight": 57
+                },
+                {
+                    "aa_name": "cntj",
+                    "children_weight": 0,
+                    "weight": 57
+                },
+                {
+                    "aa_name": "xhth",
+                    "children_weight": 0,
+                    "weight": 57
+                }
+            ],
+            "children_weight": 0,
+            "weight": 72
+        }
+    ],
+    "children_weight": 0,
+    "weight": 41
+}
 tknk
-tknk
-{}
-[
-    {
-        "name": "pbga",
-        "weight": "66"
-    },
-    {
-        "name": "xhth",
-        "weight": "57"
-    },
-    {
-        "name": "ebii",
-        "weight": "61"
-    },
-    {
-        "name": "havc",
-        "weight": "66"
-    },
-    {
-        "name": "ktlj",
-        "weight": "57"
-    },
-    {
-        "children": [
-            "ktlj",
-            "cntj",
-            "xhth"
-        ],
-        "name": "fwft",
-        "weight": "72"
-    },
-    {
-        "name": "qoyq",
-        "weight": "66"
-    },
-    {
-        "children": [
-            "pbga",
-            "havc",
-            "qoyq"
-        ],
-        "name": "padx",
-        "weight": "45"
-    },
-    {
-        "name": "jptl",
-        "weight": "61"
-    },
-    {
-        "children": [
-            "gyxo",
-            "ebii",
-            "jptl"
-        ],
-        "name": "ugml",
-        "weight": "68"
-    },
-    {
-        "name": "gyxo",
-        "weight": "61"
-    },
-    {
-        "name": "cntj",
-        "weight": "57"
-    }
-]
 ugml
+0
 ugml
-{}
-[
-    {
-        "name": "pbga",
-        "weight": "66"
-    },
-    {
-        "name": "xhth",
-        "weight": "57"
-    },
-    {
-        "name": "ebii",
-        "weight": "61"
-    },
-    {
-        "name": "havc",
-        "weight": "66"
-    },
-    {
-        "name": "ktlj",
-        "weight": "57"
-    },
-    {
-        "children": [
-            "ktlj",
-            "cntj",
-            "xhth"
-        ],
-        "name": "fwft",
-        "weight": "72"
-    },
-    {
-        "name": "qoyq",
-        "weight": "66"
-    },
-    {
-        "children": [
-            "pbga",
-            "havc",
-            "qoyq"
-        ],
-        "name": "padx",
-        "weight": "45"
-    },
-    {
-        "name": "jptl",
-        "weight": "61"
-    },
-    {
-        "name": "gyxo",
-        "weight": "61"
-    },
-    {
-        "name": "cntj",
-        "weight": "57"
-    }
-]
 gyxo
+0
+gyxo
+61
+ebii
+61
+ebii
+61
+jptl
+122
+jptl
+61
+68
+padx
+68
+padx
+pbga
+0
+pbga
+66
+havc
+66
+havc
+66
+qoyq
+132
+qoyq
+66
+45
+fwft
+113
+fwft
+ktlj
+0
+ktlj
+57
+cntj
+57
+cntj
+57
+xhth
+114
+xhth
+57
+72
+41
+[]
+{
+    "aa_name": "tknk",
+    "children": [
+        {
+            "aa_name": "ugml",
+            "children": [
+                {
+                    "aa_name": "gyxo",
+                    "children_weight": 0,
+                    "weight": 61
+                },
+                {
+                    "aa_name": "ebii",
+                    "children_weight": 0,
+                    "weight": 61
+                },
+                {
+                    "aa_name": "jptl",
+                    "children_weight": 0,
+                    "weight": 61
+                }
+            ],
+            "children_weight": 183,
+            "weight": 68
+        },
+        {
+            "aa_name": "padx",
+            "children": [
+                {
+                    "aa_name": "pbga",
+                    "children_weight": 0,
+                    "weight": 66
+                },
+                {
+                    "aa_name": "havc",
+                    "children_weight": 0,
+                    "weight": 66
+                },
+                {
+                    "aa_name": "qoyq",
+                    "children_weight": 0,
+                    "weight": 66
+                }
+            ],
+            "children_weight": 198,
+            "weight": 45
+        },
+        {
+            "aa_name": "fwft",
+            "children": [
+                {
+                    "aa_name": "ktlj",
+                    "children_weight": 0,
+                    "weight": 57
+                },
+                {
+                    "aa_name": "cntj",
+                    "children_weight": 0,
+                    "weight": 57
+                },
+                {
+                    "aa_name": "xhth",
+                    "children_weight": 0,
+                    "weight": 57
+                }
+            ],
+            "children_weight": 171,
+            "weight": 72
+        }
+    ],
+    "children_weight": 185,
+    "weight": 41
+}
