@@ -20,10 +20,55 @@ After this process, the largest value in any register is 1.
 You might also encounter <= (less than or equal to) or != (not equal to). However, the CPU doesn't have the bandwidth to tell you what all the registers are named, and leaves that to you to determine.
 
 What is the largest value in any register after completing the instructions in your puzzle input?
+
+--- Part Two ---
+
+To be safe, the CPU also needs to know the highest value held in any register during this process so that it can decide how much memory to allocate to these operations. For example, in the above instructions, the highest value ever held was 10 (in register c after the third instruction was evaluated).
+
+
 '''
 
-f = open("./inputs/day8-test","r")
-
+f = open("./inputs/day8","r")
+registers = [[] for i in range(2)]
+print(registers)
+maxim = 0
 for line in f:
-    line = line.split()
-    if 
+    print(line)
+    line = line.split("if")
+    operation = line[0]
+    condition = line[1]
+    print(operation, condition)
+    operation = operation.split()
+    condition = condition.split()
+    if operation[0] not in registers[0]:
+        registers[0].append(operation[0])
+        registers[1].append(0)
+    if condition[0] not in registers[0]:
+        registers[0].append(condition[0])
+        registers[1].append(0)
+    index1 = registers[0].index(condition[0])
+    index2 = registers[0].index(operation[0])
+    if condition[1] == ">":
+        true = (registers[1][index1] > int(condition[2]))
+    if condition[1] == "<":
+        true = (registers[1][index1] < int(condition[2]))
+    if condition[1] == "==":
+        true = (registers[1][index1] == int(condition[2]))
+    if condition[1] == ">=":
+        true = (registers[1][index1] >= int(condition[2]))
+    if condition[1] == "<=":
+        true = (registers[1][index1] <= int(condition[2]))
+    if condition[1] == "!=":
+        true = (registers[1][index1] != int(condition[2]))
+    if true:
+        if operation[1] == "inc":
+            registers[1][index2] += int(operation[2])
+        else:
+            registers[1][index2] -= int(operation[2])
+    maxim = max(max(registers[1]), maxim) # check the maxim nnumbers always for PART TWO
+    print(registers)
+
+print(max(registers[1])) # PART 1 result
+print(maxim) # PART TWO result
+
+    
