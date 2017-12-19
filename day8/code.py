@@ -23,3 +23,7 @@ What is the largest value in any register after completing the instructions in y
 '''
 
 f = open("./inputs/day8-test","r")
+
+for line in f:
+    line = line.split()
+    if 
