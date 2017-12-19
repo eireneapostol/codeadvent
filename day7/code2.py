@@ -18,7 +18,7 @@ Given that exactly one program is the wrong weight, what would its weight need t
 '''
 import json
 import re
-f = open("./inputs/day7-test","r")
+f = open("./inputs/day7","r")
 
 towers = []
 
@@ -30,7 +30,7 @@ for line in f:
     tower["aa_name"] = line[0]
     match = re.search('[0-9]+',line[1]) # extract the weight from the parenthesis
     weight = (str(match.group()))
-    tower["weight"] = int(weight)
+    tower["aa_weight"] = int(weight)
     if len(line) > 2:
         tower["children"] = []
         for i in range(3, len(line)):
@@ -48,9 +48,9 @@ def create_tree(tree,root):
         if tower["aa_name"] == root:
             #print(root)
             tree["aa_name"] = root
-            tree["weight"] = tower["weight"]
+            tree["aa_weight"] = tower["aa_weight"]
             towers.remove(tower)
-            tree["children_weight"] = 0
+            tree["aa_children_weight"] = 0
             if "children" in tower:
                 #print(root)
                 tree["children"] = []
@@ -65,23 +65,76 @@ def create_tree(tree,root):
     return tree
 
 def search_tree(tree):
-    print(tree["aa_name"])
+    #print(tree["aa_name"])
     if "children" in tree:
-        children_balanced = "yes"
+        for i in tree["children"]:  
+            #print(i["aa_name"])
+            tree["aa_children_weight"] += search_tree(i)
+            #print(tree["aa_children_weight"])
+        return int(tree["aa_children_weight"]) + tree["aa_weight"]
+    #print(tree["weight"])
+    else:
+        return int(tree["aa_weight"])
+
+def check_tree(tree):
+    if "children" in tree:
+        subtower_weight_list = []
         for i in tree["children"]:
+            check_tree(i)
+            subtower_weight_list.append((i["aa_weight"] + i["aa_children_weight"]))
+        #subtower_weight_list = list(set(subtower_weight_list))
+        subtower_weight_list = sorted(subtower_weight_list)
+        bb = "false"
+        #print(subtower_weight_list)
+        if subtower_weight_list[len(subtower_weight_list) - 1] != subtower_weight_list[len(subtower_weight_list) - 2]:
+            unbalanced = subtower_weight_list[len(subtower_weight_list) - 1]
+            balanced = subtower_weight_list[len(subtower_weight_list) - 2]
+            bb = "true"
+        elif subtower_weight_list[0] != subtower_weight_list[1]:
+            unbalanced = subtower_weight_list[0]
+            balanced = subtower_weight_list[1]
+            bb = "true"
+        if (bb == "true"):
+            for i in tree["children"]:
+                if (i["aa_weight"] + i["aa_children_weight"]) == unbalanced:
+                    ww = i["aa_weight"]
+                    #print(ww)
+                    #print(i["aa_name"])
+                    #print(balanced)
+                    #print(unbalanced)
+                    if balanced > unbalanced:
+                        print(ww + abs(balanced-unbalanced))
+                        return ww + abs(balanced-unbalanced)
+                    else:
+                        print(ww - abs(balanced-unbalanced))
+                        return ww - abs(balanced-unbalanced)
+
+def check_tree2(tree):
+    if "children" in tree:
+        subtower_weight_list = []
+        for i in tree["children"]:
+            subtower_weight_list.append(i["aa_children_weight"] + i["aa_weight"])
             print(i["aa_name"])
-            print(tree["children_weight"])
-            tree["children_weight"] += search_tree(i)
-    print(tree["weight"])
-    return int(tree["weight"])
+        #subtower_weight_list = sorted(subtower_weight_list)
+        print(subtower_weight_list)
+
+        
+           
+        
+                
+            
+    #print(tree["weight"])
+    #return int(tree["weight"])
 
 
-root = "tknk" # obtained from running the test example from Part1
-#root = "mwzaxaj" #obtained from running input code from Part1
+#root = "tknk" # obtained from running the test example from Part1
+root = "mwzaxaj" #obtained from running input code from Part1
+#root = "xegshds"
 tree = {}
 tree = create_tree(tree,root)
-
+#children_balanced = "yes"
 search_tree(tree)
+check_tree(tree) # the first printed number is the highes unbalanced tower
 
 print(json.dumps(towers, indent=4, sort_keys=True))
 print(json.dumps(tree, indent=4, sort_keys=True))
